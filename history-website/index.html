@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tāhuhu Kōrero - NZ Social Sciences Hub</title>
+    <title>Ōtakāro Histories - NZ Social Sciences Hub</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Load Inter font -->
@@ -38,15 +36,14 @@
             <div class="flex justify-between h-16">
                 <!-- Logo/Brand Name -->
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-teal-700">Tāhuhu Kōrero</span>
+                    <span class="text-2xl font-bold text-teal-700">Ōtakāro Histories</span>
                 </div>
                 
                 <!-- Desktop Navigation Links -->
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                     <a href="#" class="border-teal-600 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
-                    <a href="#framework" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Curriculum Framework</a>
-                    <a href="#year-levels" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Year Levels</a>
-                    <a href="#about" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    <a href="#resource-collections" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Resource Collections</a>
+                    <a href="#professional-learning" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Professional Learning</a>
                 </div>
 
                 <!-- Mobile Menu Button (Hamburger) -->
@@ -70,9 +67,8 @@
         <div class="hidden sm:hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
                 <a href="#" class="bg-teal-50 border-teal-600 text-teal-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
-                <a href="#framework" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Curriculum Framework</a>
-                <a href="#year-levels" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Year Levels</a>
-                <a href="#about" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="#resource-collections" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resource Collections</a>
+                <a href="#professional-learning" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Professional Learning</a>
             </div>
         </div>
     </nav>
@@ -81,172 +77,167 @@
     <main>
         <!-- Hero Section -->
         <div class="relative bg-white overflow-hidden">
-            <div class="max-w-7xl mx-auto">
-                <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-                    <!-- SVG separator for visual interest -->
-                    <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                        <polygon points="50,0 100,0 50,100 0,100" />
-                    </svg>
-
-                    <div class="relative pt-6 px-4 sm:px-6 lg:px-8"></div>
-
-                    <div class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-                        <div class="sm:text-center lg:text-left">
-                            <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                                <span class="block xl:inline">Teaching the Aotearoa NZ</span>
-                                <span class="block text-teal-600 xl:inline">Social Sciences</span>
-                            </h1>
-                            <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                Your hub for resources, lesson plans, and guides to implement the new Social Sciences curriculum for Years 1-10.
-                            </p>
-                            <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                                <div class="rounded-md shadow">
-                                    <a href="#year-levels" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg md:px-10">
-                                        Explore by Year Level
-                                    </a>
-                                </div>
-                                <div class="mt-3 sm:mt-0 sm:ml-3">
-                                    <a href="#framework" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-700 bg-teal-100 hover:bg-teal-200 md:py-4 md:text-lg md:px-10">
-                                        Learn the Framework
-                                    </a>
-                                </div>
-                            </div>
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        <span class="block xl:inline">Teaching the Aotearoa NZ</span>
+                        <span class="block text-teal-600 xl:inline">Social Sciences</span>
+                    </h1>
+                    <p class="mt-3 max-w-2xl mx-auto text-base text-gray-500 sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
+                        Your hub for <span class="font-medium text-gray-700">Kāhui Ako ki Ōtākaro</span> teachers. Access <span class="font-medium text-gray-700">knowledge-rich</span>, <span class="font-medium text-gray-700">professionally curated collections</span>, lesson plans, and guides to implement <span class="font-medium text-gray-700">Phase 3 (Years 7-8)</span> of the new Social Sciences curriculum.
+                    </p>
+                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
+                        <div class="rounded-md shadow">
+                            <a href="#resource-collections" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 md:py-4 md:text-lg md:px-10">
+                                Explore Resources
+                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Hero Image -->
-            <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-                <!--  -->
-                <img class="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" 
-                     src="https://placehold.co/1000x800/0D9488/FFFFFF?text=Aotearoa+Classroom" 
-                     alt="A placeholder image of a classroom setting, suggesting diversity and learning.">
             </div>
         </div>
 
-        <!-- Curriculum Framework Section (Understand, Know, Do) -->
-        <section id="framework" class="py-16 bg-gray-50 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Curriculum Framework</h2>
-                    <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                        Understand, Know, and Do
-                    </p>
-                    <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
-                        The new curriculum is structured around three key elements to help ākonga make sense of the past, present, and future.
-                    </p>
-                </div>
-
-                <div class="mt-12 grid gap-8 md:grid-cols-3">
-                    <!-- Understand Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-600 text-white">
-                            <!-- Heroicon: academic-cap -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <h3 class="mt-5 text-lg font-medium text-gray-900">Understand</h3>
-                        <p class="mt-2 text-base text-gray-500">
-                            The "big ideas" and contexts that are central to Aotearoa New Zealand's histories and social landscape.
-                        </p>
-                    </div>
-
-                    <!-- Know Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-600 text-white">
-                            <!-- Heroicon: book-open -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                        </div>
-                        <h3 class="mt-5 text-lg font-medium text-gray-900">Know</h3>
-                        <p class="mt-2 text-base text-gray-500">
-                            The specific people, places, events, and stories that illustrate the "Understand" contexts.
-                        </p>
-                    </div>
-
-                    <!-- Do Card -->
-                    <div class="bg-white p-8 rounded-lg shadow-md">
-                        <div class="flex items-center justify-center h-12 w-12 rounded-md bg-teal-600 text-white">
-                            <!-- Heroicon: beaker -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.002 8.002 0 0122 12c0 3.03-1.66 5.61-4.015 6.986C15.5 21 13 21.5 11 21.5c-2 0-4-1-4-1s.657-1.343 2.657-3.343z" />
-                            </svg>
-                        </div>
-                        <h3 class="mt-5 text-lg font-medium text-gray-900">Do</h3>
-                        <p class="mt-2 text-base text-gray-500">
-                            The skills ākonga use to think critically, examine sources, and explore different perspectives.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Year Levels Section -->
-        <section id="year-levels" class="py-16 bg-white sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-3xl font-extrabold text-gray-900 text-center">Resources by Year Level</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
-                    Find lesson plans and activities tailored to each stage of learning.
-                </p>
-
-                <!-- Responsive Grid for Year Levels -->
-                <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-                    <!-- Years 1-3 Card -->
-                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold text-teal-700">Years 1-3</h3>
-                        <p class="mt-2 text-gray-600">Focus on immediate history, family (whānau), and local landmarks (tūrangawaewae).</p>
-                        <span class="inline-block mt-4 text-sm font-medium text-teal-600 group-hover:underline">View Resources &rarr;</span>
-                    </a>
-
-                    <!-- Years 4-6 Card -->
-                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold text-teal-700">Years 4-6</h3>
-                        <p class="mt-2 text-gray-600">Exploring local and regional histories, Te Tiriti o Waitangi, and early encounters.</p>
-                        <span class="inline-block mt-4 text-sm font-medium text-teal-600 group-hover:underline">View Resources &rarr;</span>
-                    </a>
-
-                    <!-- Years 7-8 Card -->
-                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold text-teal-700">Years 7-8</h3>
-                        <p class="mt-2 text-gray-600">Connecting national events to local stories, migration, and Aotearoa's identity.</p>
-                        <span class="inline-block mt-4 text-sm font-medium text-teal-600 group-hover:underline">View Resources &rarr;</span>
-                    </a>
-
-                    <!-- Years 9-10 Card -->
-                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-2xl font-bold text-teal-700">Years 9-10</h3>
-                        <p class="mt-2 text-gray-600">In-depth inquiry into power, conflict, economic change, and NZ's place in the world.</p>
-                        <span class="inline-block mt-4 text-sm font-medium text-teal-600 group-hover:underline">View Resources &rarr;</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="bg-teal-700">
-            <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
-                <!--  -->
-                <img class="h-48 w-auto mx-auto lg:mx-0 lg:flex-shrink-0" 
-                     src="https://placehold.co/400x400/134E4A/FFFFFF?text=Koru" 
-                     alt="A placeholder graphic with a Koru spiral, symbolizing new life and growth.">
+        <!-- New Main Content Wrapper (Content + Sidebar) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-12">
                 
-                <div class="mt-8 lg:mt-0 lg:ml-12">
-                    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
-                        Our Mission
-                    </h2>
-                    <p class="mt-4 text-lg text-teal-100">
-                        Tāhuhu Kōrero is dedicated to supporting kaiako (teachers) in bringing the Aotearoa New Zealand Social Sciences curriculum to life. We aim to provide high-quality, accessible, and engaging resources that honour Te Tiriti o Waitangi and reflect the diverse histories and voices of our nation.
-                    </p>
-                    <div class="mt-6">
-                        <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-teal-700 bg-white hover:bg-gray-100">
-                            Learn More About Us
-                        </a>
+                <!-- Main Content Column -->
+                <div class="lg:col-span-8">
+        
+                    <!-- Resource Collections Section -->
+                    <section id="resource-collections" class="py-16 bg-white sm:py-24">
+                        <h2 class="text-3xl font-extrabold text-gray-900 text-center">Phase 3 (Years 7-8) Unit Collections</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
+                            Professionally curated, knowledge-rich units for your Years 7-8 classroom.
+                        </p>
+                
+                        <!-- Grid for Year 7 and Year 8 -->
+                        <div class="mt-12 grid gap-8 md:grid-cols-2">
+                            
+                            <!-- Year 7 Column -->
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 7 Units</h3>
+                                <div class="grid grid-rows-4 gap-6">
+                                    <!-- Y7 Term 1 -->
+                                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                        <span class="text-sm font-semibold text-teal-600">Term 1</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Te Tiriti and Early Colonial Years</h4>
+                                        <p class="mt-2 text-gray-600 text-sm">Te Tiriti, He Whakaputanga, early governors, New Zealand Wars, source work.</p>
+                                    </a>
+                                    <!-- Y7 Term 2 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 2</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Rivers, Glaciation and Local Landscapes</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                    <!-- Y7 Term 3 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 3</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Democracy, Citizenship and Civic Participation</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                    <!-- Y7 Term 4 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 4</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Industrial Revolution and Personal Finance</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                </div>
+                            </div>
+                
+                            <!-- Year 8 Column -->
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 8 Units</h3>
+                                <div class="grid grid-rows-4 gap-6">
+                                    <!-- Y8 Term 1 -->
+                                    <a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                        <span class="text-sm font-semibold text-teal-600">Term 1</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Liberal Era and Women’s Suffrage</h4>
+                                        <p class="mt-2 text-gray-600 text-sm">Liberal reforms, women’s suffrage, social policy, primary source analysis.</p>
+                                    </a>
+                                    <!-- Y8 Term 2 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 2</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">European Imperial Expansion and Case Study</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                    <!-- Y8 Term 3 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 3</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Population Change and Hazard Management</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                    <!-- Y8 Term 4 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                        <span class="text-sm font-semibold text-teal-600">Term 4</span>
+                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Personal Finance, Government Budget and Constitutional Models</h4>
+                                        <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                                    </a>
+                                </div>
+                            </div>
+                
+                        </div>
+                    </section>
+        
+                    <!-- Professional Learning Section -->
+                    <section id="professional-learning" class="py-16 bg-gray-50 sm:py-24">
+                        <div class="text-center">
+                            <h2 class="text-base font-semibold text-teal-600 tracking-wide uppercase">Professional Learning</h2>
+                            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                                Grow Your Practice
+                            </p>
+                            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                                Our PLD is here to help you use the teaching resource effectively and to confidently implement the curriculum.
+                            </p>
+                            <div class="mt-8 text-center">
+                                <p class="text-lg text-gray-700">For support and enquiries:</p>
+                                <p class="mt-2 text-xl font-semibold text-teal-700">
+                                    <a href="mailto:jwt@shirley.school.nz" class="hover:underline">jwt@shirley.school.nz</a>
+                                </p>
+                                <p class="mt-1 text-xl font-semibold text-teal-700">
+                                    <a href="tel:0273032121" class="hover:underline">027 303 2121</a>
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                
+                </div> <!-- End Main Content Column -->
+
+                <!-- Sidebar Column -->
+                <div class="lg:col-span-4">
+                    <div class="sticky top-24 py-16 sm:py-24">
+                        <!-- Latest News Section -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-gray-900">Latest News</h3>
+                                <div class="mt-6 space-y-4">
+                                    <!-- News Item 1 -->
+                                    <div class="pb-4 border-b border-gray-200">
+                                        <span class="text-sm text-gray-500">Oct 30, 2025</span>
+                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-teal-600">Term 1 Resources Now Live</a>
+                                        <p class="text-sm text-gray-600 mt-1">All resources for the Year 7 and 8 Term 1 units are now available.</p>
+                                    </div>
+                                    <!-- News Item 2 -->
+                                    <div class="pb-4 border-b border-gray-200">
+                                        <span class="text-sm text-gray-500">Oct 28, 2025</span>
+                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-teal-600">New PLD Workshop Announced</a>
+                                        <p class="text-sm text-gray-600 mt-1">Join us in November for a workshop on Te Tiriti source work.</p>
+                                    </div>
+                                    <!-- News Item 3 -->
+                                    <div>
+                                        <span class="text-sm text-gray-500">Oct 25, 2025</span>
+                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-teal-600">Welcome to Ōtakāro Histories</a>
+                                        <p class="text-sm text-gray-600 mt-1">We're excited to launch this new resource hub for Kāhui Ako ki Ōtākaro teachers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Latest News Section -->
                     </div>
-                </div>
-            </div>
-        </section>
+                </div> <!-- End Sidebar Column -->
+
+            </div> <!-- End Grid -->
+        </div> <!-- End Main Content Wrapper -->
     </main>
 
     <!-- Footer -->
@@ -255,7 +246,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div class="space-y-8 xl:col-span-1">
-                    <span class="text-3xl font-bold text-white">Tāhuhu Kōrero</span>
+                    <span class="text-3xl font-bold text-white">Ōtakāro Histories</span>
                     <p class="text-gray-400 text-base">
                         Supporting NZ teachers with the Social Sciences curriculum.
                     </p>
@@ -266,9 +257,8 @@
                             <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Navigation</h3>
                             <ul role="list" class="mt-4 space-y-4">
                                 <li><a href="#" class="text-base text-gray-400 hover:text-white">Home</a></li>
-                                <li><a href="#framework" class="text-base text-gray-400 hover:text-white">Framework</a></li>
-                                <li><a href="#year-levels" class="text-base text-gray-400 hover:text-white">Year Levels</a></li>
-                                <li><a href="#about" class="text-base text-gray-400 hover:text-white">About Us</a></li>
+                                <li><a href="#resource-collections" class="text-base text-gray-400 hover:text-white">Resource Collections</a></li>
+                                <li><a href="#professional-learning" class="text-base text-gray-400 hover:text-white">Professional Learning</a></li>
                             </ul>
                         </div>
                         <div class="mt-12 md:mt-0">
@@ -283,7 +273,7 @@
                 </div>
             </div>
             <div class="mt-12 border-t border-gray-700 pt-8">
-                <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Tāhuhu Kōrero. All rights reserved.</p>
+                <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Ōtakāro Histories. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -323,3 +313,6 @@
     </script>
 </body>
 </html>
+
+
+
