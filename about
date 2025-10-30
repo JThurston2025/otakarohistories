@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Ōtakāro Histories</title>
+    <!-- Load Auth0 --><script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar styles (optional, but nice) */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0; /* light-blue-400 */
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; /* light-blue-500 */
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom Blue Color Palette for the theme */
+        .text-custom-blue-700 { color: #005A9C; } /* Darker blue for text */
+        .text-custom-blue-600 { color: #007ACC; } /* Main blue for accents */
+        .bg-custom-blue-600 { background-color: #007ACC; }
+        .hover\:bg-custom-blue-700:hover { background-color: #005A9C; }
+        .border-custom-blue-600 { border-color: #007ACC; }
+        .bg-custom-blue-50 { background-color: #F0F8FF; } /* Very light blue for subtle backgrounds */
+        .text-custom-blue-700-darker { color: #004F8A; } /* Even darker for strong emphasis */
+
+        /* Specific overrides for Tailwind classes where the custom blue is used */
+        .text-teal-700 { color: #005A9C; }
+        .text-teal-600 { color: #007ACC; }
+        .bg-teal-600 { background-color: #007ACC; }
+        .hover\:bg-teal-700:hover { background-color: #005A9C; }
+        .border-teal-600 { border-color: #007ACC; }
+        .bg-teal-50 { background-color: #F0F8FF; }
+        .focus\:ring-teal-500:focus { --tw-ring-color: #007ACC; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header & Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo/Brand Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="block h-16 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x48/007ACC/FFFFFF?text=Logo';">
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <!-- Home link, pointing to index.html -->
+                    <a href="index.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                    <a href="index.html#resource-collections" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Resource Collections</a>
+                    <a href="index.html#professional-learning" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Professional Learning</a>
+                    <!-- About link, set to active -->
+                    <a href="about.html" class="border-custom-blue-600 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                    
+                    <!-- Auth0 Login/Logout Desktop -->
+                    <div class="ml-4 flex items-center">
+                        <button id="btn-login-desktop" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700">Login</button>
+                        <button id="btn-logout-desktop" class="hidden inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Logout</button>
+                        <span id="user-name-desktop" class="hidden ml-4 inline-flex items-center text-sm font-medium text-gray-700"></span>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="flex items-center sm:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-custom-blue-600" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu, show/hide based on menu state. -->
+        <div class="hidden sm:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <!-- Home link -->
+                <a href="index.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="index.html#resource-collections" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resource Collections</a>
+                <a href="index.html#professional-learning" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Professional Learning</a>
+                <!-- About link, set to active -->
+                <a href="about.html" class="bg-custom-blue-50 border-custom-blue-600 text-custom-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+            </div>
+            <!-- Auth0 Login/Logout Mobile -->
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <span id="user-name-mobile" class="hidden text-base font-medium text-gray-800"></span>
+                </div>
+                <div class="mt-3 space-y-1">
+                    <button id="btn-login-mobile" class="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Login</button>
+                    <button id="btn-logout-mobile" class="hidden block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- NEW: About Page Content -->
+        <div class="relative overflow-hidden">
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        <span class="block text-custom-blue-600 xl:inline">About Ōtakāro Histories</span>
+                    </h1>
+                    <p class="mt-3 max-w-2xl mx-auto text-base text-gray-500 sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
+                        Supporting teachers and enriching ākonga (student) learning in Aotearoa New Zealand.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Wrapper -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 sm:pb-24">
+            <div class="space-y-12 text-lg text-gray-700">
+                <!-- Section 1: Our Mission -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-custom-blue-700 mb-4">Our Mission</h2>
+                    <p class="mb-4">
+                        Ōtakāro Histories is a collaborative initiative dedicated to supporting the implementation of the Aotearoa New Zealand Social Sciences curriculum. Our primary goal is to provide high-quality, knowledge-rich, and locally-focused resources for teachers within the <span class="font-semibold text-gray-900">Kāhui Ako ki Ōtākaro</span> and beyond.
+                    </p>
+                    <p>
+                        We focus on <span class="font-semibold text-gray-900">Phase 3 (Years 7-8)</span>, creating professionally curated unit collections that are practical, engaging, and ready for classroom use. We aim to ease the transition to the curriculum refresh by offering materials that are deeply rooted in our local histories and environments, while connecting to the broader national context.
+                    </p>
+                </div>
+                
+                <!-- Section 2: Our Approach -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-custom-blue-700 mb-4">Our Approach</h2>
+                    <p class="mb-4">
+                        Our resources are developed by experienced educators *for* educators. Each unit collection is designed to be comprehensive, including lesson plans, curated sources, and assessment guides. We believe that a knowledge-rich curriculum is the foundation for critical thinking and deep understanding.
+                    </p>
+                    <p>
+                        Beyond just providing resources, we are committed to building a community of practice. Through ongoing <span class="font-semibold text-gray-900">Professional Learning and Development (PLD)</span>, we support teachers in building their confidence and capability with the new curriculum content and pedagogical approaches.
+                    </p>
+                </div>
+
+                <!-- Section 3: Get Involved -->
+                <div>
+                    <h2 class="text-3xl font-extrabold text-custom-blue-700 mb-4">Get Involved</h2>
+                    <p class="mb-4">
+                        This initiative is led by educators from within the Kāhui Ako ki Ōtākaro. We welcome collaboration, feedback, and contributions from fellow teachers.
+                    </p>
+                    <p class="text-base">
+                        For support, enquiries, or to find out how you can contribute, please reach out:
+                    </p>
+                    <div class="mt-4 text-center">
+                        <p class="mt-2 text-xl font-semibold text-custom-blue-700">
+                            <a href="mailto:jwt@shirley.school.nz" class="hover:underline">jwt@shirley.school.nz</a>
+                        </p>
+                        <p class="mt-1 text-xl font-semibold text-custom-blue-700">
+                            <a href="tel:0273032121" class="hover:underline">027 303 2121</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- End of new content -->
+
+    <!-- Footer -->
+    <footer class="bg-gray-800" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" class="sr-only">Footer</h2>
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <img class="h-10 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x40/FFFFFF/374151?text=Logo';">
+                    <p class="text-gray-400 text-base">
+                        Supporting NZ teachers with the Social Sciences curriculum.
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Navigation</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="index.html" class="text-base text-gray-400 hover:text-white">Home</a></li>
+                                <li><a href="index.html#resource-collections" class="text-base text-gray-400 hover:text-white">Resource Collections</a></li>
+                                <li><a href="index.html#professional-learning" class="text-base text-gray-400 hover:text-white">Professional Learning</a></li>
+                                <li><a href="about.html" class="text-base text-gray-400 hover:text-white">About</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Useful Links</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="https://curriculumrefresh.education.govt.nz/social-sciences" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white">Official Curriculum Refresh</a></li>
+                                <li><a href="https://tki.org.nz/social-sciences-online" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white">Social Sciences Online (TKI)</a></li>
+                                <li><a href="https://teara.govt.nz/" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white">Te Ara Encyclopedia</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Ōtakāro Histories. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                iconOpen.classList.toggle('hidden');
+                iconClose.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    // Only close if it's a link to the same page (e.g., hash link)
+                    // Since this page has no hash links, we can just let the page navigate
+                    // But for consistency with index.html, we'll close it.
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+    <!-- Auth0 Integration Script -->
+    <script type="module">
+        // Auth0 SPA SDK is loaded in the <head>
+        // Use a try-catch block in case the script fails to load
+        try {
+            const { createAuth0Client } = auth0;
+
+            let auth0Client = null;
+
+            // Auth0 Configuration
+            const authConfig = {
+                domain: "dev-1e7w5xse5l1t3a4q.us.auth0.com",
+                clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe", // Using the client ID you provided earlier
+                authorizationParams: {
+                    redirect_uri: window.location.origin + window.location.pathname // More robust redirect
+                },
+                cacheLocation: 'localstorage'
+            };
+
+            // Function to update UI based on authentication state
+            const updateUI = async () => {
+                if (!auth0Client) {
+                    console.error("Auth0 client not initialized");
+                    return;
+                }
+                
+                const isAuthenticated = await auth0Client.isAuthenticated();
+                
+                // Get all login/logout/user elements
+                const loginButtons = [document.getElementById('btn-login-desktop'), document.getElementById('btn-login-mobile')];
+                const logoutButtons = [document.getElementById('btn-logout-desktop'), document.getElementById('btn-logout-mobile')];
+                const userNames = [document.getElementById('user-name-desktop'), document.getElementById('user-name-mobile')];
+
+                if (isAuthenticated) {
+                    const user = await auth0Client.getUser();
+                    
+                    loginButtons.forEach(btn => btn && btn.classList.add('hidden'));
+                    logoutButtons.forEach(btn => btn && btn.classList.remove('hidden'));
+                    userNames.forEach(el => {
+                        if (el) {
+                            el.innerText = user.name || user.email; // Display name or email
+                            el.classList.remove('hidden');
+                        }
+                    });
+
+                } else {
+                    loginButtons.forEach(btn => btn && btn.classList.remove('hidden'));
+                    logoutButtons.forEach(btn => btn && btn.classList.add('hidden'));
+                    userNames.forEach(el => {
+                        if (el) {
+                            el.classList.add('hidden');
+                            el.innerText = '';
+                        }
+                    });
+                }
+            };
+
+            // Event Listeners for Login
+            document.getElementById('btn-login-desktop')?.addEventListener('click', async () => {
+                await auth0Client.loginWithRedirect();
+            });
+            document.getElementById('btn-login-mobile')?.addEventListener('click', async () => {
+                await auth0Client.loginWithRedirect();
+            });
+
+            // Event Listeners for Logout
+            const logout = () => {
+                auth0Client.logout({
+                    logoutParams: {
+                        returnTo: window.location.origin + "/index.html" // Return to home on logout
+                    }
+                });
+            };
+            document.getElementById('btn-logout-desktop')?.addEventListener('click', logout);
+            document.getElementById('btn-logout-mobile')?.addEventListener('click', logout);
+
+            // Initialize Auth0 on page load
+            window.addEventListener('load', async () => {
+                try {
+                    auth0Client = await createAuth0Client(authConfig);
+                } catch (e) {
+                    console.error("Error initializing Auth0 client", e);
+                    return;
+                }
+
+                const query = window.location.search;
+                if (query.includes("code=") && query.includes("state=")) {
+                    // Handle the redirect callback
+                    try {
+                        await auth0Client.handleRedirectCallback();
+                        // Clean up URL
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    } catch (e) {
+                        console.error("Error handling redirect callback", e);
+                    }
+                }
+                
+                // Update the UI
+                await updateUI();
+            });
+
+        } catch (e) {
+            console.error("Auth0 SDK not loaded or failed to initialize.", e);
+            // Hide all auth buttons if the SDK fails
+            ['btn-login-desktop', 'btn-login-mobile', 'btn-logout-desktop', 'btn-logout-mobile'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>
+
