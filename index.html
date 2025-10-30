@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +37,7 @@
         .text-custom-blue-700 { color: #005A9C; } /* Darker blue for text */
         .text-custom-blue-600 { color: #007ACC; } /* Main blue for accents */
         .bg-custom-blue-600 { background-color: #007ACC; }
-        .hover:bg-custom-blue-700:hover { background-color: #005A9C; }
+        .hover\:bg-custom-blue-700:hover { background-color: #005A9C; }
         .border-custom-blue-600 { border-color: #007ACC; }
         .bg-custom-blue-50 { background-color: #F0F8FF; } /* Very light blue for subtle backgrounds */
         .text-custom-blue-700-darker { color: #004F8A; } /* Even darker for strong emphasis */
@@ -50,13 +52,13 @@
         .focus\:ring-teal-500:focus { --tw-ring-color: #007ACC; } /* Changed from teal-500 ring to custom blue */
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<!-- UPDATED: Set main background to white for a cleaner, minimalist look --><body class="bg-white text-gray-800">
 
     <!-- Header & Navigation --><nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <!-- Logo/Brand Name --><div class="flex-shrink-0 flex items-center">
-                    <img class="block h-12 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo">
+                <!-- Logo/Brand Name --><!-- UPDATED: Increased logo height from h-12 to h-16 (or h-20 for even larger) --><div class="flex-shrink-0 flex items-center">
+                    <img class="block h-16 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x48/007ACC/FFFFFF?text=Logo';">
                 </div>
                 
                 <!-- Desktop Navigation Links --><div class="hidden sm:ml-6 sm:flex sm:space-x-8">
@@ -104,7 +106,7 @@
     </nav>
 
     <!-- Main Content --><main>
-        <!-- Hero Section --><div class="relative bg-white overflow-hidden">
+        <!-- Hero Section --><!-- UPDATED: Removed redundant bg-white, as body is now white --><div class="relative overflow-hidden">
             <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
@@ -130,73 +132,73 @@
                 
                 <!-- Main Content Column --><div class="lg:col-span-8">
         
-                    <!-- Resource Collections Section --><section id="resource-collections" class="py-16 bg-white sm:py-24">
-                        <h2 class="text-3xl font-extrabold text-gray-900 text-center">Phase 3 (Years 7-8) Unit Collections</h2>
+                    <!-- Resource Collections Section --><!-- UPDATED: Removed redundant bg-white --><section id="resource-collections" class="py-16 sm:py-24">
+                        <h2 class="text-3xl font-extrabold text-custom-blue-700 text-center">Phase 3 (Years 7-8) Unit Collections</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
                             Professionally curated, knowledge-rich units for your Years 7-8 classroom.
                         </p>
-                
+        
                         <!-- Grid for Year 7 and Year 8 --><div class="mt-12 grid gap-8 md:grid-cols-2">
                             
                             <!-- Year 7 Column --><div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 7 Units</h3>
+                                <h3 class="text-2xl font-bold text-custom-blue-700 mb-6 text-center md:text-left">Year 7 Units</h3>
                                 <div class="grid grid-rows-4 gap-6">
-                                    <!-- Y7 Term 1 --><a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                    <!-- Y7 Term 1 --><!-- UPDATED: Replaced bg-gray-50 and heavy shadow with a clean border and subtle hover shadow --><a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Te Tiriti and Early Colonial Years</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Te Tiriti and Early Colonial Years</h4>
                                         <p class="mt-2 text-gray-600 text-sm">Te Tiriti, He Whakaputanga, early governors, New Zealand Wars, source work.</p>
                                     </a>
-                                    <!-- Y7 Term 2 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y7 Term 2 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Rivers, Glaciation and Local Landscapes</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Rivers, Glaciation and Local Landscapes</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y7 Term 3 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y7 Term 3 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Democracy, Citizenship and Civic Participation</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Democracy, Citizenship and Civic Participation</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y7 Term 4 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y7 Term 4 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Industrial Revolution and Personal Finance</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Industrial Revolution and Personal Finance</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
                                 </div>
                             </div>
-                
+        
                             <!-- Year 8 Column --><div>
-                                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 8 Units</h3>
+                                <h3 class="text-2xl font-bold text-custom-blue-700 mb-6 text-center md:text-left">Year 8 Units</h3>
                                 <div class="grid grid-rows-4 gap-6">
-                                    <!-- Y8 Term 1 --><a href="#" class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                    <!-- Y8 Term 1 --><!-- UPDATED: Replaced bg-gray-50 and heavy shadow with a clean border and subtle hover shadow --><a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Liberal Era and Women’s Suffrage</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Liberal Era and Women’s Suffrage</h4>
                                         <p class="mt-2 text-gray-600 text-sm">Liberal reforms, women’s suffrage, social policy, primary source analysis.</p>
                                     </a>
-                                    <!-- Y8 Term 2 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y8 Term 2 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">European Imperial Expansion and Case Study</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">European Imperial Expansion and Case Study</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y8 Term 3 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y8 Term 3 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Population Change and Hazard Management</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Population Change and Hazard Management</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y8 Term 4 --><a href="#" class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60 cursor-not-allowed">
+                                    <!-- Y8 Term 4 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
-                                        <h4 class="text-xl font-bold text-gray-800 mt-1">Personal Finance, Government Budget and Constitutional Models</h4>
+                                        <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Personal Finance, Government Budget and Constitutional Models</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
                                 </div>
                             </div>
-                
+        
                         </div>
                     </section>
         
-                    <!-- Professional Learning Section --><section id="professional-learning" class="py-16 bg-gray-50 sm:py-24">
+                    <!-- Professional Learning Section --><!-- UPDATED: Removed bg-gray-50 and added a subtle top border to separate sections --><section id="professional-learning" class="py-16 sm:py-24 border-t border-gray-200">
                         <div class="text-center">
                             <h2 class="text-base font-semibold text-custom-blue-600 tracking-wide uppercase">Professional Learning</h2>
-                            <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                            <p class="mt-2 text-3xl font-extrabold text-custom-blue-700 sm:text-4xl">
                                 Grow Your Practice
                             </p>
                             <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
@@ -216,23 +218,23 @@
                 
                 </div> <!-- End Main Content Column --><!-- Sidebar Column --><div class="lg:col-span-4">
                     <div class="sticky top-24 py-16 sm:py-24">
-                        <!-- Latest News Section --><div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <!-- Latest News Section --><!-- UPDATED: Replaced heavy shadow-lg with a clean, minimalist border --><div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
                             <div class="p-6">
-                                <h3 class="text-2xl font-bold text-gray-900">Latest News</h3>
+                                <h3 class="text-2xl font-bold text-custom-blue-700">Latest News</h3>
                                 <div class="mt-6 space-y-4">
-                                    <!-- News Item 1 --><div class="pb-4 border-b border-gray-200">
+                                    <!-- News Item 1 --><!-- UPDATED: Made internal border lighter --><div class="pb-4 border-b border-gray-100">
                                         <span class="text-sm text-gray-500">Oct 30, 2025</span>
-                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">Term 1 Resources Now Live</a>
+                                        <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">Term 1 Resources Now Live</a>
                                         <p class="text-sm text-gray-600 mt-1">All resources for the Year 7 and 8 Term 1 units are now available.</p>
                                     </div>
-                                    <!-- News Item 2 --><div class="pb-4 border-b border-gray-200">
+                                    <!-- News Item 2 --><!-- UPDATED: Made internal border lighter --><div class="pb-4 border-b border-gray-100">
                                         <span class="text-sm text-gray-500">Oct 28, 2025</span>
-                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">New PLD Workshop Announced</a>
+                                        <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">New PLD Workshop Announced</a>
                                         <p class="text-sm text-gray-600 mt-1">Join us in November for a workshop on Te Tiriti source work.</p>
                                     </div>
                                     <!-- News Item 3 --><div>
                                         <span class="text-sm text-gray-500">Oct 25, 2025</span>
-                                        <a href="#" class="block mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">Welcome to Ōtakāro Histories</a>
+                                        <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">Welcome to Ōtakāro Histories</a>
                                         <p class="text-sm text-gray-600 mt-1">We're excited to launch this new resource hub for Kāhui Ako ki Ōtākaro teachers.</p>
                                     </div>
                                 </div>
@@ -246,7 +248,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
                 <div class="space-y-8 xl:col-span-1">
-                    <img class="h-10 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo">
+                    <img class="h-10 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x40/FFFFFF/374151?text=Logo';">
                     <p class="text-gray-400 text-base">
                         Supporting NZ teachers with the Social Sciences curriculum.
                     </p>
@@ -313,102 +315,112 @@
 
     <!-- Auth0 Integration Script --><script type="module">
         // Auth0 SPA SDK is loaded in the <head>
-        const { createAuth0Client } = auth0;
+        // Use a try-catch block in case the script fails to load
+        try {
+            const { createAuth0Client } = auth0;
 
-        let auth0Client = null;
+            let auth0Client = null;
 
-        // Auth0 Configuration
-        const authConfig = {
-            domain: "dev-1e7w5xse5l1t3a4q.us.auth0.com",
-            clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe", // Using the client ID you provided earlier
-            authorizationParams: {
-                redirect_uri: "https://jthurston2025.github.io/otakarohistories/"
-            },
-            cacheLocation: 'localstorage'
-        };
+            // Auth0 Configuration
+            const authConfig = {
+                domain: "dev-1e7w5xse5l1t3a4q.us.auth0.com",
+                clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe", // Using the client ID you provided earlier
+                authorizationParams: {
+                    redirect_uri: window.location.origin + window.location.pathname // More robust redirect
+                },
+                cacheLocation: 'localstorage'
+            };
 
-        // Function to update UI based on authentication state
-        const updateUI = async () => {
-            if (!auth0Client) {
-                console.error("Auth0 client not initialized");
-                return;
-            }
-            
-            const isAuthenticated = await auth0Client.isAuthenticated();
-            
-            // Get all login/logout/user elements
-            const loginButtons = [document.getElementById('btn-login-desktop'), document.getElementById('btn-login-mobile')];
-            const logoutButtons = [document.getElementById('btn-logout-desktop'), document.getElementById('btn-logout-mobile')];
-            const userNames = [document.getElementById('user-name-desktop'), document.getElementById('user-name-mobile')];
-
-            if (isAuthenticated) {
-                const user = await auth0Client.getUser();
+            // Function to update UI based on authentication state
+            const updateUI = async () => {
+                if (!auth0Client) {
+                    console.error("Auth0 client not initialized");
+                    return;
+                }
                 
-                loginButtons.forEach(btn => btn.classList.add('hidden'));
-                logoutButtons.forEach(btn => btn.classList.remove('hidden'));
-                userNames.forEach(el => {
-                    el.innerText = user.name || user.email; // Display name or email
-                    el.classList.remove('hidden');
-                });
+                const isAuthenticated = await auth0Client.isAuthenticated();
+                
+                // Get all login/logout/user elements
+                const loginButtons = [document.getElementById('btn-login-desktop'), document.getElementById('btn-login-mobile')];
+                const logoutButtons = [document.getElementById('btn-logout-desktop'), document.getElementById('btn-logout-mobile')];
+                const userNames = [document.getElementById('user-name-desktop'), document.getElementById('user-name-mobile')];
 
-            } else {
-                loginButtons.forEach(btn => btn.classList.remove('hidden'));
-                logoutButtons.forEach(btn => btn.classList.add('hidden'));
-                userNames.forEach(el => {
-                    el.classList.add('hidden');
-                    el.innerText = '';
-                });
-            }
-        };
+                if (isAuthenticated) {
+                    const user = await auth0Client.getUser();
+                    
+                    loginButtons.forEach(btn => btn && btn.classList.add('hidden'));
+                    logoutButtons.forEach(btn => btn && btn.classList.remove('hidden'));
+                    userNames.forEach(el => {
+                        if (el) {
+                            el.innerText = user.name || user.email; // Display name or email
+                            el.classList.remove('hidden');
+                        }
+                    });
 
-        // Event Listeners for Login
-        document.getElementById('btn-login-desktop').addEventListener('click', async () => {
-            await auth0Client.loginWithRedirect();
-        });
-        document.getElementById('btn-login-mobile').addEventListener('click', async () => {
-            await auth0Client.loginWithRedirect();
-        });
-
-        // Event Listeners for Logout
-        document.getElementById('btn-logout-desktop').addEventListener('click', () => {
-            auth0Client.logout({
-                logoutParams: {
-                    returnTo: "https://jthurston2025.github.io/otakarohistories/"
+                } else {
+                    loginButtons.forEach(btn => btn && btn.classList.remove('hidden'));
+                    logoutButtons.forEach(btn => btn && btn.classList.add('hidden'));
+                    userNames.forEach(el => {
+                        if (el) {
+                            el.classList.add('hidden');
+                            el.innerText = '';
+                        }
+                    });
                 }
-            });
-        });
-        document.getElementById('btn-logout-mobile').addEventListener('click', () => {
-            auth0Client.logout({
-                logoutParams: {
-                    returnTo: "https://jthurston2025.github.io/otakarohistories/"
-                }
-            });
-        });
+            };
 
-        // Initialize Auth0 on page load
-        window.addEventListener('load', async () => {
-            try {
-                auth0Client = await createAuth0Client(authConfig);
-            } catch (e) {
-                console.error("Error initializing Auth0 client", e);
-                return;
-            }
+            // Event Listeners for Login
+            document.getElementById('btn-login-desktop')?.addEventListener('click', async () => {
+                await auth0Client.loginWithRedirect();
+            });
+            document.getElementById('btn-login-mobile')?.addEventListener('click', async () => {
+                await auth0Client.loginWithRedirect();
+            });
 
-            const query = window.location.search;
-            if (query.includes("code=") && query.includes("state=")) {
-                // Handle the redirect callback
+            // Event Listeners for Logout
+            const logout = () => {
+                auth0Client.logout({
+                    logoutParams: {
+                        returnTo: window.location.origin + window.location.pathname
+                    }
+                });
+            };
+            document.getElementById('btn-logout-desktop')?.addEventListener('click', logout);
+            document.getElementById('btn-logout-mobile')?.addEventListener('click', logout);
+
+            // Initialize Auth0 on page load
+            window.addEventListener('load', async () => {
                 try {
-                    await auth0Client.handleRedirectCallback();
-                    // Clean up URL
-                    window.history.replaceState({}, document.title, window.location.pathname);
+                    auth0Client = await createAuth0Client(authConfig);
                 } catch (e) {
-                    console.error("Error handling redirect callback", e);
+                    console.error("Error initializing Auth0 client", e);
+                    return;
                 }
-            }
-            
-            // Update the UI
-            await updateUI();
-        });
+
+                const query = window.location.search;
+                if (query.includes("code=") && query.includes("state=")) {
+                    // Handle the redirect callback
+                    try {
+                        await auth0Client.handleRedirectCallback();
+                        // Clean up URL
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    } catch (e) {
+                        console.error("Error handling redirect callback", e);
+                    }
+                }
+                
+                // Update the UI
+                await updateUI();
+            });
+
+        } catch (e) {
+            console.error("Auth0 SDK not loaded or failed to initialize.", e);
+            // Hide all auth buttons if the SDK fails
+            ['btn-login-desktop', 'btn-login-mobile', 'btn-logout-desktop', 'btn-logout-mobile'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.style.display = 'none';
+            });
+        }
     </script>
 </body>
 </html>
