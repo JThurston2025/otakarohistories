@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ōtakāro Histories - NZ Social Sciences Hub</title>
+    
     <!-- Load Auth0 --><script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+    
     <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Load Inter font --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -52,34 +55,50 @@
         .focus\:ring-teal-500:focus { --tw-ring-color: #007ACC; } /* Changed from teal-500 ring to custom blue */
     </style>
 </head>
-<!-- UPDATED: Set main background to white for a cleaner, minimalist look --><body class="bg-white text-gray-800">
 
-    <!-- Header & Navigation --><nav class="bg-white shadow-sm sticky top-0 z-50">
+<body class="bg-white text-gray-800">
+
+    
+    <!-- Header & Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
-                <!-- Logo/Brand Name --><!-- UPDATED: Increased logo height from h-12 to h-16 (or h-20 for even larger) --><div class="flex-shrink-0 flex items-center">
+                
+                <!-- Logo/Brand Name -->
+                <div class="flex-shrink-0 flex items-center">
                     <img class="block h-16 w-auto" src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" alt="Ōtakāro Histories Logo" onerror="this.onerror=null;this.src='https://placehold.co/100x48/007ACC/FFFFFF?text=Logo';">
                 </div>
                 
-                <!-- Desktop Navigation Links --><div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="#" class="border-custom-blue-600 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                    <a href="index.html" class="border-custom-blue-600 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
                     <a href="#resource-collections" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Resource Collections</a>
                     <a href="#professional-learning" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Professional Learning</a>
+                    <a href="https://jthurston2025.github.io/otakarohistories/about.html" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
                     
-                    <!-- Auth0 Login/Logout Desktop --><div class="ml-4 flex items-center">
+                    
+                    <!-- Auth0 Login/Logout Desktop -->
+                    <div class="ml-4 flex items-center">
                         <button id="btn-login-desktop" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700">Login</button>
                         <button id="btn-logout-desktop" class="hidden inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700">Logout</button>
                         <span id="user-name-desktop" class="hidden ml-4 inline-flex items-center text-sm font-medium text-gray-700"></span>
                     </div>
                 </div>
 
-                <!-- Mobile Menu Button (Hamburger) --><div class="flex items-center sm:hidden">
+                
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="flex items-center sm:hidden">
                     <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-custom-blue-600" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
-                        <!-- Icon when menu is closed. --><svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        
+                        <!-- Icon when menu is closed. -->
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
-                        <!-- Icon when menu is open. --><svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        
+                        <!-- Icon when menu is open. -->
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
@@ -87,13 +106,18 @@
             </div>
         </div>
 
-        <!-- Mobile Menu, show/hide based on menu state. --><div class="hidden sm:hidden" id="mobile-menu">
+        
+        <!-- Mobile Menu, show/hide based on menu state. -->
+        <div class="hidden sm:hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
-                <a href="#" class="bg-custom-blue-50 border-custom-blue-600 text-custom-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="index.html" class="bg-custom-blue-50 border-custom-blue-600 text-custom-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
                 <a href="#resource-collections" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Resource Collections</a>
                 <a href="#professional-learning" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Professional Learning</a>
+                <a href="https://jthurston2025.github.io/otakarohistories/about.html" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
             </div>
-            <!-- Auth0 Login/Logout Mobile --><div class="pt-4 pb-3 border-t border-gray-200">
+            
+            <!-- Auth0 Login/Logout Mobile -->
+            <div class="pt-4 pb-3 border-t border-gray-200">
                 <div class="flex items-center px-4">
                     <span id="user-name-mobile" class="hidden text-base font-medium text-gray-800"></span>
                 </div>
@@ -105,8 +129,12 @@
         </div>
     </nav>
 
-    <!-- Main Content --><main>
-        <!-- Hero Section --><!-- UPDATED: Removed redundant bg-white, as body is now white --><div class="relative overflow-hidden">
+    
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden">
             <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
@@ -127,38 +155,56 @@
             </div>
         </div>
 
-        <!-- New Main Content Wrapper (Content + Sidebar) --><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- New Main Content Wrapper (Content + Sidebar) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:grid lg:grid-cols-12 lg:gap-12">
                 
-                <!-- Main Content Column --><div class="lg:col-span-8">
+                
+                <!-- Main Content Column -->
+                <div class="lg:col-span-8">
         
-                    <!-- Resource Collections Section --><!-- UPDATED: Removed redundant bg-white --><section id="resource-collections" class="py-16 sm:py-24">
+                    
+                    <!-- Resource Collections Section -->
+                    <section id="resource-collections" class="py-16 sm:py-24">
                         <h2 class="text-3xl font-extrabold text-custom-blue-700 text-center">Phase 3 (Years 7-8) Unit Collections</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
                             Professionally curated, knowledge-rich units for your Years 7-8 classroom.
                         </p>
         
-                        <!-- Grid for Year 7 and Year 8 --><div class="mt-12 grid gap-8 md:grid-cols-2">
+                        
+                        <!-- Grid for Year 7 and Year 8 -->
+                        <div class="mt-12 grid gap-8 md:grid-cols-2">
                             
-                            <!-- Year 7 Column --><div>
+                            
+                            <!-- Year 7 Column -->
+                            <div>
                                 <h3 class="text-2xl font-bold text-custom-blue-700 mb-6 text-center md:text-left">Year 7 Units</h3>
                                 <div class="grid grid-rows-4 gap-6">
-                                    <!-- Y7 Term 1 --><!-- UPDATED: Replaced bg-gray-50 and heavy shadow with a clean border and subtle hover shadow --><a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
+                                    
+                                    <!-- Y7 Term 1 -->
+                                    <a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Te Tiriti and Early Colonial Years</h4>
                                         <p class="mt-2 text-gray-600 text-sm">Te Tiriti, He Whakaputanga, early governors, New Zealand Wars, source work.</p>
                                     </a>
-                                    <!-- Y7 Term 2 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y7 Term 2 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Rivers, Glaciation and Local Landscapes</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y7 Term 3 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y7 Term 3 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Democracy, Citizenship and Civic Participation</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y7 Term 4 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y7 Term 4 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Industrial Revolution and Personal Finance</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
@@ -166,25 +212,35 @@
                                 </div>
                             </div>
         
-                            <!-- Year 8 Column --><div>
+                            
+                            <!-- Year 8 Column -->
+                            <div>
                                 <h3 class="text-2xl font-bold text-custom-blue-700 mb-6 text-center md:text-left">Year 8 Units</h3>
                                 <div class="grid grid-rows-4 gap-6">
-                                    <!-- Y8 Term 1 --><!-- UPDATED: Replaced bg-gray-50 and heavy shadow with a clean border and subtle hover shadow --><a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
+                                    
+                                    <!-- Y8 Term 1 -->
+                                    <a href="#" class="block group p-6 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow duration-300 h-full">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Liberal Era and Women’s Suffrage</h4>
                                         <p class="mt-2 text-gray-600 text-sm">Liberal reforms, women’s suffrage, social policy, primary source analysis.</p>
                                     </a>
-                                    <!-- Y8 Term 2 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y8 Term 2 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">European Imperial Expansion and Case Study</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y8 Term 3 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y8 Term 3 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Population Change and Hazard Management</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
                                     </a>
-                                    <!-- Y8 Term 4 --><!-- UPDATED: Kept bg-gray-50 to differentiate disabled state, but replaced shadow with border --><a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
+                                    
+                                    <!-- Y8 Term 4 -->
+                                    <a href="#" class="block p-6 bg-gray-50 rounded-lg border border-gray-200 h-full opacity-60 cursor-not-allowed">
                                         <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
                                         <h4 class="text-xl font-bold text-custom-blue-700 mt-1">Personal Finance, Government Budget and Constitutional Models</h4>
                                         <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
@@ -195,7 +251,9 @@
                         </div>
                     </section>
         
-                    <!-- Professional Learning Section --><!-- UPDATED: Removed bg-gray-50 and added a subtle top border to separate sections --><section id="professional-learning" class="py-16 sm:py-24 border-t border-gray-200">
+                    
+                    <!-- Professional Learning Section -->
+                    <section id="professional-learning" class="py-16 sm:py-24 border-t border-gray-200">
                         <div class="text-center">
                             <h2 class="text-base font-semibold text-custom-blue-600 tracking-wide uppercase">Professional Learning</h2>
                             <p class="mt-2 text-3xl font-extrabold text-custom-blue-700 sm:text-4xl">
@@ -216,23 +274,34 @@
                         </div>
                     </section>
                 
-                </div> <!-- End Main Content Column --><!-- Sidebar Column --><div class="lg:col-span-4">
+                </div> 
+                
+                <!-- Sidebar Column -->
+                <div class="lg:col-span-4">
                     <div class="sticky top-24 py-16 sm:py-24">
-                        <!-- Latest News Section --><!-- UPDATED: Replaced heavy shadow-lg with a clean, minimalist border --><div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                        
+                        <!-- Latest News Section -->
+                        <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
                             <div class="p-6">
                                 <h3 class="text-2xl font-bold text-custom-blue-700">Latest News</h3>
                                 <div class="mt-6 space-y-4">
-                                    <!-- News Item 1 --><!-- UPDATED: Made internal border lighter --><div class="pb-4 border-b border-gray-100">
+                                    
+                                    <!-- News Item 1 -->
+                                    <div class="pb-4 border-b border-gray-100">
                                         <span class="text-sm text-gray-500">Oct 30, 2025</span>
                                         <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">Term 1 Resources Now Live</a>
                                         <p class="text-sm text-gray-600 mt-1">All resources for the Year 7 and 8 Term 1 units are now available.</p>
                                     </div>
-                                    <!-- News Item 2 --><!-- UPDATED: Made internal border lighter --><div class="pb-4 border-b border-gray-100">
+                                    
+                                    <!-- News Item 2 -->
+                                    <div class="pb-4 border-b border-gray-100">
                                         <span class="text-sm text-gray-500">Oct 28, 2025</span>
                                         <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">New PLD Workshop Announced</a>
                                         <p class="text-sm text-gray-600 mt-1">Join us in November for a workshop on Te Tiriti source work.</p>
                                     </div>
-                                    <!-- News Item 3 --><div>
+                                    
+                                    <!-- News Item 3 -->
+                                    <div>
                                         <span class="text-sm text-gray-500">Oct 25, 2025</span>
                                         <a href="#" class="block mt-1 font-semibold text-custom-blue-700 hover:text-custom-blue-600">Welcome to Ōtakāro Histories</a>
                                         <p class="text-sm text-gray-600 mt-1">We're excited to launch this new resource hub for Kāhui Ako ki Ōtākaro teachers.</p>
@@ -240,10 +309,20 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Latest News Section --></div>
-                </div> <!-- End Sidebar Column --></div> <!-- End Grid --></div> <!-- End Main Content Wrapper --></main>
+                        
+                        <!-- End Latest News Section -->
+                    </div>
+                </div> 
+                <!-- End Sidebar Column -->
+            </div> 
+            <!-- End Grid -->
+        </div> 
+        <!-- End Main Content Wrapper -->
+    </main>
 
-    <!-- Footer --><footer class="bg-gray-800" aria-labelledby="footer-heading">
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -258,9 +337,10 @@
                         <div>
                             <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Navigation</h3>
                             <ul role="list" class="mt-4 space-y-4">
-                                <li><a href="#" class="text-base text-gray-400 hover:text-white">Home</a></li>
+                                <li><a href="index.html" class="text-base text-gray-400 hover:text-white">Home</a></li>
                                 <li><a href="#resource-collections" class="text-base text-gray-400 hover:text-white">Resource Collections</a></li>
                                 <li><a href="#professional-learning" class="text-base text-gray-400 hover:text-white">Professional Learning</a></li>
+                                <li><a href="https://jthurston2025.github.io/otakarohistories/about.html" class="text-base text-gray-400 hover:text-white">About</a></li>
                             </ul>
                         </div>
                         <div class="mt-12 md:mt-0">
@@ -280,7 +360,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu --><script>
+    
+    <!-- JavaScript for Mobile Menu -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             const menuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -313,7 +395,9 @@
         });
     </script>
 
-    <!-- Auth0 Integration Script --><script type="module">
+    
+    <!-- Auth0 Integration Script -->
+    <script type="module">
         // Auth0 SPA SDK is loaded in the <head>
         // Use a try-catch block in case the script fails to load
         try {
@@ -381,7 +465,7 @@
             const logout = () => {
                 auth0Client.logout({
                     logoutParams: {
-                        returnTo: window.location.origin + window.location.pathname
+                        returnTo: window.location.origin + "/index.html"
                     }
                 });
             };
@@ -424,4 +508,5 @@
     </script>
 </body>
 </html>
+
 
