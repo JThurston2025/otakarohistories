@@ -13,7 +13,24 @@
     
     <style>
         /* Apply Inter font */
-/* ... existing code ... -->
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar styles (optional, but nice) */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0; /* light-blue-400 */
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; /* light-blue-500 */
+        }
+        /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
@@ -330,9 +347,9 @@
         // Auth0 Configuration
         const authConfig = {
             domain: "dev-1e7w5xse5l1t3a4q.us.auth0.com",
-            clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe",
+            clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe", // Using the client ID you provided earlier
             authorizationParams: {
-                redirect_uri: window.location.origin
+                redirect_uri: "https://jthurston2025.github.io/otakarohistories/"
             },
             cacheLocation: 'localstorage'
         };
@@ -383,14 +400,14 @@
         document.getElementById('btn-logout-desktop').addEventListener('click', () => {
             auth0Client.logout({
                 logoutParams: {
-                    returnTo: window.location.origin
+                    returnTo: "https://jthurston2025.github.io/otakarohistories/"
                 }
             });
         });
         document.getElementById('btn-logout-mobile').addEventListener('click', () => {
             auth0Client.logout({
                 logoutParams: {
-                    returnTo: window.location.origin
+                    returnTo: "https://jthurston2025.github.io/otakarohistories/"
                 }
             });
         });
