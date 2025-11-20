@@ -1,9 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ōtakāro Histories - Your hub for Kāhui Ako ki Ōtākaro teachers. Access knowledge-rich, professionally curated collections for teaching the NZ Social Sciences curriculum.">
+    <title>Ōtakāro Histories - NZ Social Sciences Hub</title>
+    
+    <!-- Preconnect to external resources for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.auth0.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Load fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'custom-blue': {
+                            50: '#F0F8FF',
+                            600: '#007ACC',
+                            700: '#005A9C',
+                            800: '#004F8A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Apply Inter font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading state */
+        .loading {
+            pointer-events: none;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
 
----
-layout: layout.njk
-title: Welcome to My History Site
----
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-custom-blue-600 focus:text-white">
+        Skip to main content
+    </a>
 
-# Hello from Eleventy!
+    <!-- Header & Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50" role="navigation" aria-label="Main navigation">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo/Brand Name -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" aria-label="Ōtakāro Histories Home">
+                        <img class="block h-12 w-auto" 
+                             src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" 
+                             alt="Ōtakāro Histories Logo"
+                             loading="eager">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation Links -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-8 sm:items-center">
+                    <a href="#" 
+                       class="border-custom-blue-600 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                       aria-current="page">
+                        Home
+                    </a>
+                    <a href="#resource-collections" 
+                       class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
+                        Resource Collections
+                    </a>
+                    <a href="#special-units" 
+                       class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
+                        Special Units
+                    </a>
+                    <a href="#professional-learning" 
+                       class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
+                        Professional Learning
+                    </a>
+                    
+                    <!-- Auth0 Login/Logout Desktop -->
+                    <div class="ml-4 flex items-center gap-4">
+                        <button id="btn-login-desktop" 
+                                class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue-500"
+                                aria-label="Login">
+                            Login
+                        </button>
+                        <button id="btn-logout-desktop" 
+                                class="hidden inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                                aria-label="Logout">
+                            Logout
+                        </button>
+                        <span id="user-name-desktop" class="hidden text-sm font-medium text-gray-700" aria-live="polite"></span>
+                    </div>
+                </div>
 
-This is your first page. You can edit this content and add more pages as needed.
+                <!-- Mobile Menu Button (Hamburger) -->
+                <div class="flex items-center sm:hidden">
+                    <button id="mobile-menu-button" 
+                            type="button" 
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-custom-blue-600 transition-colors" 
+                            aria-controls="mobile-menu" 
+                            aria-expanded="false"
+                            aria-label="Toggle navigation menu">
+                        <svg id="icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg id="icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden sm:hidden" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#" 
+                   class="bg-custom-blue-50 border-custom-blue-600 text-custom-blue-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+                   aria-current="page">
+                    Home
+                </a>
+                <a href="#resource-collections" 
+                   class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Resource Collections
+                </a>
+                <a href="#special-units" 
+                   class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Special Units
+                </a>
+                <a href="#professional-learning" 
+                   class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                    Professional Learning
+                </a>
+            </div>
+            <!-- Auth0 Login/Logout Mobile -->
+            <div class="pt-4 pb-3 border-t border-gray-200">
+                <div class="flex items-center px-4">
+                    <span id="user-name-mobile" class="hidden text-base font-medium text-gray-800" aria-live="polite"></span>
+                </div>
+                <div class="mt-3 space-y-1">
+                    <button id="btn-login-mobile" 
+                            class="block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
+                        Login
+                    </button>
+                    <button id="btn-logout-mobile" 
+                            class="hidden block w-full text-left px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="relative bg-white overflow-hidden" aria-labelledby="hero-heading">
+            <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 id="hero-heading" class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+                        <span class="block xl:inline">Teaching the Aotearoa NZ</span>
+                        <span class="block text-custom-blue-600 xl:inline">Social Sciences</span>
+                    </h1>
+                    <p class="mt-3 max-w-2xl mx-auto text-base text-gray-500 sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
+                        Your hub for <span class="font-medium text-gray-700">Kāhui Ako ki Ōtākaro</span> teachers. Access <span class="font-medium text-gray-700">knowledge-rich</span>, <span class="font-medium text-gray-700">professionally curated collections</span>, lesson plans, and guides to implement <span class="font-medium text-gray-700">Phase 3 (Years 7-8)</span> of the new Social Sciences curriculum.
+                    </p>
+                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center">
+                        <div class="rounded-md shadow">
+                            <a href="#resource-collections" 
+                               class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700 transition-colors md:py-4 md:text-lg md:px-10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue-500">
+                                Explore Resources
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News Section -->
+        <section id="latest-news" class="py-16 bg-gray-50 sm:py-24" aria-labelledby="news-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 id="news-heading" class="text-3xl font-extrabold text-gray-900 text-center">Latest News</h2>
+                <div class="mt-12 grid gap-8 md:grid-cols-3">
+                    
+                    <!-- News Item 1 -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden p-6 flex flex-col">
+                        <time datetime="2025-10-30" class="text-sm text-gray-500">Oct 30, 2025</time>
+                        <h3 class="mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">
+                            <a href="#" class="focus:outline-none focus:underline">Term 1 Resources Now Live</a>
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-1">All resources for the Year 7 and 8 Term 1 units are now available.</p>
+                    </article>
+
+                    <!-- News Item 2 -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden p-6 flex flex-col">
+                        <time datetime="2025-10-28" class="text-sm text-gray-500">Oct 28, 2025</time>
+                        <h3 class="mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">
+                            <a href="#" class="focus:outline-none focus:underline">New PLD Workshop Announced</a>
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-1">Join us in November for a workshop on Te Tiriti source work.</p>
+                    </article>
+
+                    <!-- News Item 3 -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden p-6 flex flex-col">
+                        <time datetime="2025-10-25" class="text-sm text-gray-500">Oct 25, 2025</time>
+                        <h3 class="mt-1 font-semibold text-gray-800 hover:text-custom-blue-600">
+                            <a href="#" class="focus:outline-none focus:underline">Welcome to Ōtakāro Histories</a>
+                        </h3>
+                        <p class="text-sm text-gray-600 mt-1">We're excited to launch this new resource hub for Kāhui Ako ki Ōtākaro teachers.</p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Resource Collections Section -->
+        <section id="resource-collections" class="py-16 bg-white sm:py-24" aria-labelledby="resources-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 id="resources-heading" class="text-3xl font-extrabold text-gray-900 text-center">Phase 3 (Years 7-8) Unit Collections</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
+                    Professionally curated, knowledge-rich units for your Years 7-8 classroom.
+                </p>
+        
+                <!-- Grid for Year 7 and Year 8 -->
+                <div class="mt-12 grid gap-8 md:grid-cols-2">
+                    
+                    <!-- Year 7 Column -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 7 Units</h3>
+                        <div class="grid grid-rows-4 gap-6">
+                            <!-- Y7 Term 1 -->
+                            <article class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                <a href="#" class="focus:outline-none focus:ring-2 focus:ring-custom-blue-500 rounded-lg">
+                                    <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
+                                    <h4 class="text-xl font-bold text-gray-800 mt-1 group-hover:text-custom-blue-600 transition-colors">Te Tiriti and Early Colonial Years</h4>
+                                    <p class="mt-2 text-gray-600 text-sm">Te Tiriti, He Whakaputanga, early governors, New Zealand Wars, source work.</p>
+                                </a>
+                            </article>
+                            <!-- Y7 Term 2 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">Rivers, Glaciation and Local Landscapes</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                            <!-- Y7 Term 3 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">Democracy, Citizenship and Civic Participation</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                            <!-- Y7 Term 4 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">Industrial Revolution and Personal Finance</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                        </div>
+                    </div>
+        
+                    <!-- Year 8 Column -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center md:text-left">Year 8 Units</h3>
+                        <div class="grid grid-rows-4 gap-6">
+                            <!-- Y8 Term 1 -->
+                            <article class="block group p-6 bg-gray-50 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                                <a href="#" class="focus:outline-none focus:ring-2 focus:ring-custom-blue-500 rounded-lg">
+                                    <span class="text-sm font-semibold text-custom-blue-600">Term 1</span>
+                                    <h4 class="text-xl font-bold text-gray-800 mt-1 group-hover:text-custom-blue-600 transition-colors">Liberal Era and Women's Suffrage</h4>
+                                    <p class="mt-2 text-gray-600 text-sm">Liberal reforms, women's suffrage, social policy, primary source analysis.</p>
+                                </a>
+                            </article>
+                            <!-- Y8 Term 2 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 2</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">European Imperial Expansion and Case Study</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                            <!-- Y8 Term 3 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 3</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">Population Change and Hazard Management</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                            <!-- Y8 Term 4 -->
+                            <article class="block p-6 bg-gray-50 rounded-lg shadow-md h-full opacity-60">
+                                <span class="text-sm font-semibold text-custom-blue-600">Term 4</span>
+                                <h4 class="text-xl font-bold text-gray-800 mt-1">Personal Finance, Government Budget and Constitutional Models</h4>
+                                <p class="mt-2 text-gray-600 text-sm font-medium">Coming Soon...</p>
+                            </article>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Units Section -->
+        <section id="special-units" class="py-16 bg-gray-50 sm:py-24" aria-labelledby="special-units-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 id="special-units-heading" class="text-3xl font-extrabold text-gray-900 text-center">Special Units</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-center text-xl text-gray-500">
+                    Cross-year level units designed for whole-school implementation and special occasions.
+                </p>
+        
+                <!-- Grid for Special Units -->
+                <div class="mt-12 grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+                    
+                    <!-- ANZAC Day Unit -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="p-8">
+                            <div class="flex items-center justify-center w-16 h-16 bg-custom-blue-600 rounded-lg mb-6">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">ANZAC Day</h3>
+                            <p class="text-gray-600 mb-4">
+                                Comprehensive units for Years 1-8 covering the significance of ANZAC Day, remembrance, and New Zealand's military history.
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Age-appropriate content for all year levels</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Primary sources and memorial activities</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Ready for whole-school implementation</span>
+                                </div>
+                            </div>
+                            <a href="#" 
+                               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue-500 w-full justify-center">
+                                Access ANZAC Day Resources
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Te Tiriti Unit -->
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <div class="p-8">
+                            <div class="flex items-center justify-center w-16 h-16 bg-custom-blue-600 rounded-lg mb-6">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3">Te Tiriti o Waitangi</h3>
+                            <p class="text-gray-600 mb-4">
+                                Progressive units for Years 1-8 exploring Te Tiriti o Waitangi, its history, significance, and ongoing impact on Aotearoa New Zealand.
+                            </p>
+                            <div class="space-y-2 mb-6">
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Developmentally appropriate for each year</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Culturally responsive teaching resources</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Supports Waitangi Day learning</span>
+                                </div>
+                            </div>
+                            <a href="#" 
+                               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-custom-blue-600 hover:bg-custom-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom-blue-500 w-full justify-center">
+                                Access Te Tiriti Resources
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Additional Information -->
+                <div class="mt-12 bg-custom-blue-50 rounded-lg p-6 max-w-4xl mx-auto">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-6 w-6 text-custom-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-3 flex-1">
+                            <h4 class="text-sm font-medium text-custom-blue-800">
+                                Whole-School Approach
+                            </h4>
+                            <p class="mt-2 text-sm text-custom-blue-700">
+                                These special units are designed to support whole-school learning experiences. Each year level has appropriately scaffolded content that builds understanding progressively from Years 1-8, allowing schools to create cohesive, school-wide learning around these important topics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Learning Section -->
+        <section id="professional-learning" class="py-16 bg-white sm:py-24" aria-labelledby="pld-heading">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 id="pld-heading" class="text-base font-semibold text-custom-blue-600 tracking-wide uppercase">Professional Learning</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+                        Grow Your Practice
+                    </p>
+                    <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+                        Our PLD is here to help you use the teaching resource effectively and to confidently implement the curriculum.
+                    </p>
+                    <div class="mt-8 text-center">
+                        <p class="text-lg text-gray-700">For support and enquiries:</p>
+                        <p class="mt-2 text-xl font-semibold text-custom-blue-700">
+                            <a href="/cdn-cgi/l/email-protection#84eef3f0c4f7ecedf6e8e1fdaaf7e7ecebebe8aaeafe" class="hover:underline focus:outline-none focus:ring-2 focus:ring-custom-blue-500 rounded"><span class="__cf_email__" data-cfemail="fc968b88bc8f94958e909985d28f9f94939390d29286">[email&#160;protected]</span></a>
+                        </p>
+                        <p class="mt-1 text-xl font-semibold text-custom-blue-700">
+                            <a href="tel:0273032121" class="hover:underline focus:outline-none focus:ring-2 focus:ring-custom-blue-500 rounded">027 303 2121</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800" aria-labelledby="footer-heading">
+        <h2 id="footer-heading" class="sr-only">Footer</h2>
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <img class="h-10 w-auto" 
+                         src="https://raw.githubusercontent.com/JThurston2025/otakarohistories/main/images/logo.png" 
+                         alt="Ōtakāro Histories Logo"
+                         loading="lazy">
+                    <p class="text-gray-400 text-base">
+                        Supporting NZ teachers with the Social Sciences curriculum.
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Navigation</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="#" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Home</a></li>
+                                <li><a href="#resource-collections" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Resource Collections</a></li>
+                                <li><a href="#special-units" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Special Units</a></li>
+                                <li><a href="#professional-learning" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Professional Learning</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Useful Links</h3>
+                            <ul role="list" class="mt-4 space-y-4">
+                                <li><a href="https://curriculumrefresh.education.govt.nz/social-sciences" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Official Curriculum Refresh</a></li>
+                                <li><a href="https://tki.org.nz/social-sciences-online" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Social Sciences Online (TKI)</a></li>
+                                <li><a href="https://teara.govt.nz/" target="_blank" rel="noopener noreferrer" class="text-base text-gray-400 hover:text-white transition-colors focus:outline-none focus:text-white">Te Ara Encyclopedia</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 xl:text-center">&copy; 2025 Ōtakāro Histories. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load Auth0 SDK -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            menuButton.addEventListener('click', () => {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                
+                // Toggle aria-expanded attribute
+                menuButton.setAttribute('aria-expanded', !isExpanded);
+                
+                // Toggle menu visibility
+                mobileMenu.classList.toggle('hidden');
+                
+                // Toggle icon visibility
+                iconOpen.classList.toggle('hidden');
+                iconClose.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenu.classList.add('hidden');
+                    iconOpen.classList.remove('hidden');
+                    iconClose.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+    <!-- Auth0 Integration Script -->
+    <script type="module">
+        const { createAuth0Client } = auth0;
+
+        let auth0Client = null;
+
+        // Auth0 Configuration
+        const authConfig = {
+            domain: "dev-1e7w5xse5l1t3a4q.us.auth0.com",
+            clientId: "GeLwskroTgfMX3784P0VPllQpFqCDBpe",
+            authorizationParams: {
+                redirect_uri: window.location.origin + window.location.pathname
+            },
+            cacheLocation: 'localstorage'
+        };
+
+        // Function to update UI based on authentication state
+        const updateUI = async () => {
+            if (!auth0Client) {
+                console.error("Auth0 client not initialized");
+                return;
+            }
+            
+            const isAuthenticated = await auth0Client.isAuthenticated();
+            
+            // Get all login/logout/user elements
+            const loginButtons = [
+                document.getElementById('btn-login-desktop'), 
+                document.getElementById('btn-login-mobile')
+            ];
+            const logoutButtons = [
+                document.getElementById('btn-logout-desktop'), 
+                document.getElementById('btn-logout-mobile')
+            ];
+            const userNames = [
+                document.getElementById('user-name-desktop'), 
+                document.getElementById('user-name-mobile')
+            ];
+
+            if (isAuthenticated) {
+                const user = await auth0Client.getUser();
+                const displayName = user.name || user.email;
+                
+                loginButtons.forEach(btn => {
+                    if (btn) btn.classList.add('hidden');
+                });
+                logoutButtons.forEach(btn => {
+                    if (btn) btn.classList.remove('hidden');
+                });
+                userNames.forEach(el => {
+                    if (el) {
+                        el.innerText = displayName;
+                        el.classList.remove('hidden');
+                    }
+                });
+            } else {
+                loginButtons.forEach(btn => {
+                    if (btn) btn.classList.remove('hidden');
+                });
+                logoutButtons.forEach(btn => {
+                    if (btn) btn.classList.add('hidden');
+                });
+                userNames.forEach(el => {
+                    if (el) {
+                        el.classList.add('hidden');
+                        el.innerText = '';
+                    }
+                });
+            }
+        };
+
+        // Login handler
+        const handleLogin = async () => {
+            if (!auth0Client) return;
+            try {
+                await auth0Client.loginWithRedirect();
+            } catch (error) {
+                console.error("Login error:", error);
+            }
+        };
+
+        // Logout handler
+        const handleLogout = () => {
+            if (!auth0Client) return;
+            try {
+                auth0Client.logout({
+                    logoutParams: {
+                        returnTo: window.location.origin + window.location.pathname
+                    }
+                });
+            } catch (error) {
+                console.error("Logout error:", error);
+            }
+        };
+
+        // Event Listeners for Login
+        const loginDesktop = document.getElementById('btn-login-desktop');
+        const loginMobile = document.getElementById('btn-login-mobile');
+        if (loginDesktop) loginDesktop.addEventListener('click', handleLogin);
+        if (loginMobile) loginMobile.addEventListener('click', handleLogin);
+
+        // Event Listeners for Logout
+        const logoutDesktop = document.getElementById('btn-logout-desktop');
+        const logoutMobile = document.getElementById('btn-logout-mobile');
+        if (logoutDesktop) logoutDesktop.addEventListener('click', handleLogout);
+        if (logoutMobile) logoutMobile.addEventListener('click', handleLogout);
+
+        // Initialize Auth0 on page load
+        window.addEventListener('load', async () => {
+            try {
+                auth0Client = await createAuth0Client(authConfig);
+            } catch (error) {
+                console.error("Error initializing Auth0 client:", error);
+                return;
+            }
+
+            const query = window.location.search;
+            if (query.includes("code=") && query.includes("state=")) {
+                try {
+                    await auth0Client.handleRedirectCallback();
+                    // Clean up URL
+                    window.history.replaceState({}, document.title, window.location.pathname);
